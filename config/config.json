@@ -1,0 +1,14 @@
+{
+  "development": {
+    "database": "./shoppingdb",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "database": ":memory",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "database": "./.shoppingdb",
+    "dialect": "sqlite"
+  }
+}
