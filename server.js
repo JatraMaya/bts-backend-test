@@ -8,7 +8,7 @@ app.use(express.json())
 readdirp(".", {
     fileFilter: "*Route.js"
 }).on("data", (route) => {
-    const path = `./{route.path}`
+    const path = `./${route.path}`
     app.use(require(path))
     console.log(`${path} is loaded`)
 })
