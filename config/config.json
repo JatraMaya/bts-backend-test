@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "./shoppingdb",
+    "database": "./shoppingdb.sqlite3",
     "dialect": "sqlite"
   },
   "test": {
@@ -8,7 +8,7 @@
     "dialect": "sqlite"
   },
   "production": {
-    "database": "./.shoppingdb",
+    "database": "./.shoppingdb.sqlite3",
     "dialect": "sqlite"
   }
 }

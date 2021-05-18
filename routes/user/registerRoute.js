@@ -1,10 +1,10 @@
 const router = require("express").Router()
-const db = require("../models/")
+const db = require("../../models")
 const { sign } = require("jsonwebtoken")
-const { hashPassword } = require("../helper/bcryptHelper")
+const { hashPassword } = require("../../helper/bcryptHelper")
 const JWTSECRETKEY = process.env.JWT_SECRET || "supersecretkey"
 
-router.post("/api/user/signup", async (req, res) => {
+router.post("/api/users/signup", async (req, res) => {
     let { username, password, email, phone, country, city, postcode, name, address } = req.body
     try {
         const hashResult = hashPassword(password)
@@ -19,14 +19,14 @@ router.post("/api/user/signup", async (req, res) => {
             name,
             address,
         }
-        const isUserExist = await db.users.findOne({
+        const isUserExist = await db.user.findOne({
             attributes: ["username"],
             where: {
                 username,
             },
         })
 
-        const isEmailExist = await db.users.findOne({
+        const isEmailExist = await db.user.findOne({
             attributes: ["email"],
             where: {
                 email,
@@ -45,6 +45,7 @@ router.post("/api/user/signup", async (req, res) => {
         }
     } catch (e) {
         res.status(400).json({ error: "Bad Request" })
+        console.log(e)
     }
 })
 
